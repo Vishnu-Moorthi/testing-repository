@@ -4,7 +4,7 @@ const path = require('path');
 const glob = require('glob');
 
 module.exports = {
-    entry: glob.sync('./src/*.ts'),
+    entry: glob.sync('*.ts'),
     module: {
         rules: [
             {
@@ -22,8 +22,7 @@ module.exports = {
         extensions: ['.ts', '.js', '.html'],
     },
     output: {
-        filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist'),
+        filename: 'index.js'
     },
     plugins: [
         ...addHtmlPlugins(),
