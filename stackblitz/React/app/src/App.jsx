@@ -1,18 +1,13 @@
 import * as React from 'react';
-import { useEffect, useRef } from 'react';
-import { Animation } from '@syncfusion/ej2-base';
-
+import { useEffect } from 'react';
+import { Draggable } from '@syncfusion/ej2-base';
 function App() {
-    let element1 = useRef();
-    let element2 = useRef();
     useEffect(() => {
-        let animation = new Animation();
-        animation.animate(element1, { name: 'FadeOut' });
-        animation.animate(element2, { name: 'ZoomOut' });
+        let draggable = new Draggable(document.getElementById('draggable'), { clone: false, dragArea: "#droppable" });
     }, []);
-    return (<div id="container">
-      <div id="element1" ref={(ele) => { element1 = ele; }}></div>
-      <div id="element2" ref={(ele) => { element2 = ele; }}></div>
-    </div>);
+    return (<div id='container'>
+           <div id='droppable'><p>Drag Area </p></div>
+           <div id='draggable'><p id='drag'>Draggable Element </p></div>
+        </div>);
 }
 export default App;
