@@ -10,7 +10,9 @@
         "mini-css-extract-plugin": "*",
         "webpack-cli": "*",
         "serve": "*",
-        "webpack": "*"
+        "webpack": "*",
+        "ts-loader": "*",
+        "glob": "*"
     },
     "scripts": {
         "start": "webpack & serve"

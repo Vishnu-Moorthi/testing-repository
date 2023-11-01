@@ -4,13 +4,13 @@ const path = require('path');
 const glob = require('glob');
 
 module.exports = {
-    entry: glob.sync('*.ts'),
+    entry: glob.sync('*.ts').map((str) => './' + str),
+    mode: 'development',
     module: {
         rules: [
             {
                 test: /\.ts?$/,
-                use: 'ts-loader',
-                exclude: /node_modules/,
+                use: 'ts-loader'
             },
             {
                 test: /\.css$/,
@@ -22,7 +22,7 @@ module.exports = {
         extensions: ['.ts', '.js', '.html'],
     },
     output: {
-        filename: 'index.js'
+        filename: 'bundle.js'
     },
     plugins: [
         ...addHtmlPlugins(),
@@ -30,12 +30,6 @@ module.exports = {
             filename: "bundle.css",
         }),
     ],
-    devServer: {
-        contentBase: path.join(__dirname, "dist"),
-        compress: true,
-        port: 4000,
-        open: true,
-    },
 };
 
 function addHtmlPlugins() {
