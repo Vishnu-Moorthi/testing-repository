@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { useEffect, useRef } from 'react';
 import { Animation } from '@syncfusion/ej2-base';
 
@@ -14,5 +15,4 @@ function App() {
       <div id="element2" ref={(ele) => { element2 = ele; }}></div>
     </div>);
 }
-
 export default App;
