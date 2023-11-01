@@ -22,6 +22,6 @@
     "eslint-plugin-vue": "^8.0.3"
   },
   "stackblitz": {
-    "startScript": "serve"
+    "startCommand": "npm run serve"
   }
 }
