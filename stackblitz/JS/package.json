@@ -2,5 +2,10 @@
     "name": "app",
     "version": "0.0.0",
     "private": true,
-    "dependencies": {}
+    "dependencies": {
+        "serve": "*"
+    },
+    "scripts": {
+        "start": "serve"
+    }
   }

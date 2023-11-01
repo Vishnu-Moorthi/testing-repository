@@ -3,6 +3,10 @@
     "version": "0.0.0",
     "private": true,
     "dependencies": {
-        "@syncfusion/ej2-base": "*"
+        "@syncfusion/ej2-base": "*",
+        "serve": "*"
+    },
+    "scripts": {
+        "start": "serve"
     }
   }
