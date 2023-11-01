@@ -4,9 +4,10 @@
     "private": true,
     "dependencies": {
         "@syncfusion/ej2-base": "*",
-        "serve": "*"
+        "serve": "*",
+        "webpack": "*"
     },
     "scripts": {
-        "start": "serve"
+        "start": "webpack & serve"
     }
   }
