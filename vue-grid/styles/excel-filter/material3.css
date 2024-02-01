@@ -110,28 +110,56 @@
 }
 
 /* stylelint-disable property-no-vendor-prefix */
+@-webkit-keyframes e-input-ripple {
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(4);
+            transform: scale(4);
+  }
+}
 @keyframes e-input-ripple {
   100% {
     opacity: 0;
-    transform: scale(4);
+    -webkit-transform: scale(4);
+            transform: scale(4);
+  }
+}
+@-webkit-keyframes slideTopUp {
+  from {
+    -webkit-transform: translate3d(0, 0, 0) scale(1);
+            transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    -webkit-transform: translate3d(0, 0, 0) scale(1);
+            transform: translate3d(0, 0, 0) scale(1);
   }
 }
 @keyframes slideTopUp {
   from {
-    transform: translate3d(0, 0, 0) scale(1);
+    -webkit-transform: translate3d(0, 0, 0) scale(1);
+            transform: translate3d(0, 0, 0) scale(1);
   }
   to {
-    transform: translate3d(0, 0, 0) scale(1);
+    -webkit-transform: translate3d(0, 0, 0) scale(1);
+            transform: translate3d(0, 0, 0) scale(1);
   }
 }
 .e-ddl.e-control-wrapper .e-ddl-icon::before {
-  transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+  -webkit-transition: -webkit-transform 300ms ease;
+  transition: -webkit-transform 300ms ease;
   transition: transform 300ms ease;
+  transition: transform 300ms ease, -webkit-transform 300ms ease;
 }
 
 .e-ddl.e-control-wrapper.e-icon-anim .e-ddl-icon::before {
-  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  -webkit-transition: -webkit-transform 300ms ease;
+  transition: -webkit-transform 300ms ease;
   transition: transform 300ms ease;
+  transition: transform 300ms ease, -webkit-transform 300ms ease;
 }
 
 .e-dropdownbase .e-list-item.e-active.e-hover {
@@ -148,12 +176,14 @@
 }
 
 .e-input-group .e-ddl-icon:not(:active)::after {
-  animation: none;
+  -webkit-animation: none;
+          animation: none;
 }
 
 .e-ddl.e-popup {
   border: 0;
-  box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.15), 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.15), 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+          box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.15), 0 1px 2px 0 rgba(0, 0, 0, 0.3);
   margin-top: 2px;
 }
 
@@ -174,7 +204,8 @@
 .e-bigger .e-ddl-device .e-input-group.e-input-focus:not(.e-success):not(.e-warning):not(.e-error) {
   background: rgba(0, 0, 0, 0.0001);
   border-width: 0;
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
   margin-bottom: 0;
 }
 
@@ -266,19 +297,43 @@
 }
 
 /* stylelint-disable property-no-vendor-prefix */
-@keyframes material-spinner-rotate {
+@-webkit-keyframes material-spinner-rotate {
   0% {
+    -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
   100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes material-spinner-rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes fabric-spinner-rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
 }
 @keyframes fabric-spinner-rotate {
   0% {
+    -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
   100% {
+    -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
 }
@@ -605,7 +660,8 @@
 .e-excelfilter .e-contextmenu-container ul:not(.e-ul) {
   border: 0;
   border-radius: 5px 5px 0 0;
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
   max-width: 300px;
   padding-bottom: 4px;
   position: static;
@@ -618,6 +674,7 @@
   z-index: 1000;
 }
 .e-excelfilter .e-dlg-content {
+  background: -webkit-gradient(linear, left bottom, left top, from(rgba(var(--color-sf-surface), 1)), to(rgba(var(--color-sf-surface), 1))), rgba(var(--color-sf-surface));
   background: linear-gradient(0deg, rgba(var(--color-sf-surface), 1), rgba(var(--color-sf-surface), 1)), rgba(var(--color-sf-surface));
   padding-top: 0;
 }
@@ -664,6 +721,7 @@
   border: 0 solid;
   position: absolute;
   -webkit-user-select: none;
+     -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
 }

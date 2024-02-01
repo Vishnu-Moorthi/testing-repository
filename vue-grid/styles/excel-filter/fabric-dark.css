@@ -1,7 +1,8 @@
 /* stylelint-disable property-no-vendor-prefix */
 .e-ddl.e-popup {
   border: 0;
-  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.26);
+  -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.26);
+          box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.26);
   margin-top: 1px;
 }
 .e-ddl.e-popup .e-input-group input {
@@ -9,6 +10,7 @@
 }
 
 .e-ddl.e-popup .e-input-group {
+  display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   width: auto;
@@ -81,19 +83,43 @@
 }
 
 /* stylelint-disable property-no-vendor-prefix */
-@keyframes material-spinner-rotate {
+@-webkit-keyframes material-spinner-rotate {
   0% {
+    -webkit-transform: rotate(0);
     transform: rotate(0);
   }
   100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes material-spinner-rotate {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes fabric-spinner-rotate {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
 }
 @keyframes fabric-spinner-rotate {
   0% {
+    -webkit-transform: rotate(0);
     transform: rotate(0);
   }
   100% {
+    -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
 }
@@ -385,7 +411,8 @@
 .e-excelfilter .e-contextmenu-container ul:not(.e-ul) {
   border: 0;
   border-radius: 0;
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
   max-width: 300px;
   padding-bottom: 4px;
   position: static;
@@ -444,6 +471,7 @@
   border: 0 solid;
   position: absolute;
   -webkit-user-select: none;
+     -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
 }

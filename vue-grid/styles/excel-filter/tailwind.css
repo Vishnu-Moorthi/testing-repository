@@ -1,12 +1,20 @@
 /* stylelint-disable property-no-vendor-prefix */
 .e-ddl.e-control-wrapper .e-ddl-icon::before {
-  transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+  -webkit-transition: -webkit-transform 300ms ease;
+  transition: -webkit-transform 300ms ease;
   transition: transform 300ms ease;
+  transition: transform 300ms ease, -webkit-transform 300ms ease;
 }
 
 .e-ddl.e-control-wrapper.e-icon-anim .e-ddl-icon::before {
-  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  -webkit-transition: -webkit-transform 300ms ease;
+  transition: -webkit-transform 300ms ease;
   transition: transform 300ms ease;
+  transition: transform 300ms ease, -webkit-transform 300ms ease;
 }
 
 .e-dropdownbase .e-list-item.e-active.e-hover {
@@ -23,13 +31,15 @@
 }
 
 .e-input-group .e-ddl-icon:not(:active)::after {
-  animation: none;
+  -webkit-animation: none;
+          animation: none;
 }
 
 .e-ddl.e-popup {
   border: 0;
   border-radius: 4px;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+          box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   margin-top: 4px;
 }
 
@@ -68,7 +78,8 @@
 .e-bigger .e-ddl-device .e-input-group.e-input-focus:not(.e-success):not(.e-warning):not(.e-error) {
   background: #fff;
   border-width: 0;
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
   margin-bottom: 0;
 }
 
@@ -94,19 +105,43 @@
 }
 
 /* stylelint-disable property-no-vendor-prefix */
-@keyframes material-spinner-rotate {
+@-webkit-keyframes material-spinner-rotate {
   0% {
+    -webkit-transform: rotate(0);
     transform: rotate(0);
   }
   100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes material-spinner-rotate {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes fabric-spinner-rotate {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
 }
 @keyframes fabric-spinner-rotate {
   0% {
+    -webkit-transform: rotate(0);
     transform: rotate(0);
   }
   100% {
+    -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
 }
@@ -401,7 +436,8 @@
 .e-excelfilter .e-contextmenu-container ul:not(.e-ul) {
   border: 0;
   border-radius: 5px 5px 0 0;
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
   max-width: 300px;
   padding-bottom: 4px;
   position: static;
@@ -460,6 +496,7 @@
   border: 0 solid;
   position: absolute;
   -webkit-user-select: none;
+     -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
 }

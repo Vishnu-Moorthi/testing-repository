@@ -1,7 +1,8 @@
 /* stylelint-disable property-no-vendor-prefix */
 .e-popup.e-ddl {
   border-radius: 4px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
   margin-top: 3px;
 }
 .e-popup.e-ddl .e-input-group {
@@ -16,6 +17,7 @@
 }
 
 .e-popup.e-ddl .e-filter-parent .e-input-group {
+  display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   width: auto;
@@ -74,7 +76,8 @@
 .e-control.e-dropdownlist .e-input-group:not(.e-disabled) .e-input-group-icon:active,
 .e-ddl.e-popup .e-input-group:not(.e-disabled) .e-back-icon:active,
 .e-ddl.e-popup .e-input-group:not(.e-disabled) .e-clear-icon:active {
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 .e-ddl.e-popup .e-filter-parent {
@@ -105,19 +108,43 @@
 }
 
 /* stylelint-disable property-no-vendor-prefix */
-@keyframes material-spinner-rotate {
+@-webkit-keyframes material-spinner-rotate {
   0% {
+    -webkit-transform: rotate(0);
     transform: rotate(0);
   }
   100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes material-spinner-rotate {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes fabric-spinner-rotate {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
 }
 @keyframes fabric-spinner-rotate {
   0% {
+    -webkit-transform: rotate(0);
     transform: rotate(0);
   }
   100% {
+    -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
 }
@@ -409,7 +436,8 @@
 .e-excelfilter .e-contextmenu-container ul:not(.e-ul) {
   border: 0;
   border-radius: 5px 5px 0 0;
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
   max-width: 300px;
   padding-bottom: 4px;
   position: static;
@@ -468,6 +496,7 @@
   border: 0 solid;
   position: absolute;
   -webkit-user-select: none;
+     -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
 }
