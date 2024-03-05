@@ -23,7 +23,7 @@ var Observer = /** @class */ (function () {
         }
         var cntxt = context || this.context;
         if (this.notExist(property)) {
-            this.boundedEvents["" + property] = [{ handler: handler, context: cntxt }];
+            this.boundedEvents["" + property] = [{ handler: handler, context: cntxt, id: id }];
             return;
         }
         if (!isNullOrUndefined(id)) {
@@ -163,6 +163,26 @@ var Observer = /** @class */ (function () {
      */
     Observer.prototype.destroy = function () {
         this.boundedEvents = this.context = undefined;
+    };
+    /**
+     * To remove internationalization events
+     *
+     * @returns {void} ?
+     */
+    Observer.prototype.offIntlEvents = function () {
+        var eventsArr = this.boundedEvents['notifyExternalChange'];
+        if (eventsArr) {
+            for (var i = 0; i < eventsArr.length; i++) {
+                var curContext = eventsArr[0].context;
+                if (curContext && curContext.detectFunction && curContext.randomId && !curContext.isRendered) {
+                    this.off('notifyExternalChange', curContext.detectFunction, curContext.randomId);
+                    i--;
+                }
+            }
+            if (!this.boundedEvents['notifyExternalChange'].length) {
+                delete this.boundedEvents['notifyExternalChange'];
+            }
+        }
     };
     /**
      * Returns if the property exists.

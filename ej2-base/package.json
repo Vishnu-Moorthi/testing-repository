@@ -169,6 +169,6 @@
     "url": "git+https://github.com/syncfusion/ej2-javascript-ui-controls.git"
   },
   "typings": "index.d.ts",
-  "version": "23.1.41",
+  "version": "23.1.42",
   "sideEffects": true
 }

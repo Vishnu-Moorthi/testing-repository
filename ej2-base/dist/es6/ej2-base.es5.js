@@ -2098,7 +2098,6 @@ var DateParser = /** @__PURE__ @class */ (function () {
                         // eslint-disable-next-line
                         matchString = ((prop === 'month') && (!parseOptions.isIslamic) && (parseOptions.culture === 'en' || parseOptions.culture === 'en-GB' || parseOptions.culture === 'en-US'))
                             ? matchString[0].toUpperCase() + matchString.substring(1).toLowerCase() : matchString;
-                        matchString = ((prop !== 'month') && (prop === 'designator') && parseOptions.culture === 'en-GB') ? matchString.toLowerCase() : matchString;
                         // eslint-disable-next-line
                         retOptions[prop] = parseOptions[prop][matchString];
                     }
@@ -2332,7 +2331,7 @@ var Observer = /** @__PURE__ @class */ (function () {
         }
         var cntxt = context || this.context;
         if (this.notExist(property)) {
-            this.boundedEvents["" + property] = [{ handler: handler, context: cntxt }];
+            this.boundedEvents["" + property] = [{ handler: handler, context: cntxt, id: id }];
             return;
         }
         if (!isNullOrUndefined(id)) {
@@ -2472,6 +2471,26 @@ var Observer = /** @__PURE__ @class */ (function () {
      */
     Observer.prototype.destroy = function () {
         this.boundedEvents = this.context = undefined;
+    };
+    /**
+     * To remove internationalization events
+     *
+     * @returns {void} ?
+     */
+    Observer.prototype.offIntlEvents = function () {
+        var eventsArr = this.boundedEvents['notifyExternalChange'];
+        if (eventsArr) {
+            for (var i = 0; i < eventsArr.length; i++) {
+                var curContext = eventsArr[0].context;
+                if (curContext && curContext.detectFunction && curContext.randomId && !curContext.isRendered) {
+                    this.off('notifyExternalChange', curContext.detectFunction, curContext.randomId);
+                    i--;
+                }
+            }
+            if (!this.boundedEvents['notifyExternalChange'].length) {
+                delete this.boundedEvents['notifyExternalChange'];
+            }
+        }
     };
     /**
      * Returns if the property exists.
@@ -4266,7 +4285,7 @@ var Fetch = /** @__PURE__ @class */ (function () {
             return this.fetchResponse.then(function (response) {
                 _this.triggerEvent(_this['onLoad'], response);
                 if (!response.ok) {
-                    throw response;
+                    throw new Error(response.statusText);
                 }
                 var responseType = 'text';
                 for (var _i = 0, _a = Object.keys(contentTypes); _i < _a.length; _i++) {
@@ -7065,7 +7084,7 @@ var LicenseValidator = /** @__PURE__ @class */ (function () {
                 }
             }
             if (validateMsg && typeof document !== 'undefined' && !isNullOrUndefined(document)) {
-                accountURL = (validateURL && validateURL !== '') ? validateURL : "https://www.syncfusion.com/account/claim-license-key?pl=SmF2YVNjcmlwdA==&vs=MjM=&utm_source=es_license_validation_banner&utm_medium=listing&utm_campaign=license-information";
+                accountURL = (validateURL && validateURL !== '') ? validateURL : "https://www.syncfusion.com/account/claim-license-key?pl=SmF2YVNjcmlwdA==&vs=MjQ=&utm_source=es_license_validation_banner&utm_medium=listing&utm_campaign=license-information";
                 var errorDiv = createElement('div', {
                     innerHTML: "<img src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzE5OV80KSI+CjxwYXRoIGQ9Ik0xMiAyMUMxNi45NzA2IDIxIDIxIDE2Ljk3MDYgMjEgMTJDMjEgNy4wMjk0NCAxNi45NzA2IDMgMTIgM0M3LjAyOTQ0IDMgMyA3LjAyOTQ0IDMgMTJDMyAxNi45NzA2IDcuMDI5NDQgMjEgMTIgMjFaIiBzdHJva2U9IiM3MzczNzMiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CjxwYXRoIGQ9Ik0xMS4yNSAxMS4yNUgxMlYxNi41SDEyLjc1IiBmaWxsPSIjNjE2MDYzIi8+CjxwYXRoIGQ9Ik0xMS4yNSAxMS4yNUgxMlYxNi41SDEyLjc1IiBzdHJva2U9IiM3MzczNzMiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CjxwYXRoIGQ9Ik0xMS44MTI1IDlDMTIuNDMzOCA5IDEyLjkzNzUgOC40OTYzMiAxMi45Mzc1IDcuODc1QzEyLjkzNzUgNy4yNTM2OCAxMi40MzM4IDYuNzUgMTEuODEyNSA2Ljc1QzExLjE5MTIgNi43NSAxMC42ODc1IDcuMjUzNjggMTAuNjg3NSA3Ljg3NUMxMC42ODc1IDguNDk2MzIgMTEuMTkxMiA5IDExLjgxMjUgOVoiIGZpbGw9IiM3MzczNzMiLz4KPC9nPgo8ZGVmcz4KPGNsaXBQYXRoIGlkPSJjbGlwMF8xOTlfNCI+CjxyZWN0IHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgZmlsbD0id2hpdGUiLz4KPC9jbGlwUGF0aD4KPC9kZWZzPgo8L3N2Zz4K' style=\"top: 6px;\n                    position: absolute;\n                    left: 16px;\n                    width: 24px;\n                    height: 24px;\"/>" + validateMsg + ' ' + '<a style="text-decoration: none;color: #0D6EFD;font-weight: 500;" href=' + accountURL + '>Claim your free account</a>'
                 });
@@ -9595,7 +9614,7 @@ function evalExp(str, nameSpace, helper, ignorePrefix) {
             }
             else {
                 // evaluate normal expression
-                cnt = cnt !== '' ? '"+' + addNameSpace(cnt.replace(/,/gi, '+' + nameSpace + '.'), (localKeys.indexOf(cnt) === -1), nameSpace, localKeys, ignorePrefix) + '+"' : '${}';
+                cnt = cnt !== '' ? '"+' + addNameSpace(cnt.replace(/,/gi, '+' + nameSpace + '.'), (localKeys.indexOf(cnt) === -1), nameSpace, localKeys, ignorePrefix) + '+"' : ' ';
             }
         }
         return cnt;
