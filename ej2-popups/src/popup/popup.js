@@ -24,7 +24,7 @@ import { calculatePosition, calculateRelativeBasedPosition } from '../common/pos
 import { Animation, Property, Event, Component } from '@syncfusion/ej2-base';
 import { NotifyPropertyChanges } from '@syncfusion/ej2-base';
 import { EventHandler } from '@syncfusion/ej2-base';
-import { flip, fit, isCollide } from '../common/collision';
+import { flip, fit, isCollide, destroy as collisionDestroy } from '../common/collision';
 /**
  * Specifies the offset position values.
  */
@@ -156,6 +156,7 @@ var Popup = /** @class */ (function (_super) {
         this.element.classList.remove(CLASSNAMES.ROOT, CLASSNAMES.RTL, CLASSNAMES.OPEN, CLASSNAMES.CLOSE);
         this.content = null;
         this.relateTo = null;
+        collisionDestroy();
         _super.prototype.destroy.call(this);
     };
     /**

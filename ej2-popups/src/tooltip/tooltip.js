@@ -24,7 +24,7 @@ import { attributes, closest, removeClass, addClass, remove } from '@syncfusion/
 import { NotifyPropertyChanges, Complex, SanitizeHtmlHelper } from '@syncfusion/ej2-base';
 import { Popup } from '../popup/popup';
 import { calculatePosition } from '../common/position';
-import { isCollide, fit } from '../common/collision';
+import { isCollide, fit, destroy as collisionDestroy } from '../common/collision';
 var TOUCHEND_HIDE_DELAY = 1500;
 var TAPHOLD_THRESHOLD = 500;
 var SHOW_POINTER_TIP_GAP = 0;
@@ -1283,6 +1283,7 @@ var Tooltip = /** @class */ (function (_super) {
         if (this.popupObj) {
             this.popupObj.destroy();
         }
+        collisionDestroy();
         removeClass([this.element], ROOT);
         this.unwireEvents(this.opensOn);
         this.unwireMouseEvents(this.element);

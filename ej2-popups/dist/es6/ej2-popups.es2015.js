@@ -602,6 +602,10 @@ function getViewPortWidth() {
     const offsetWidth = (isNullOrUndefined(document.documentElement)) ? 0 : documentReact.width;
     return windowWidth - (windowWidth - offsetWidth);
 }
+function destroy() {
+    targetContainer = null;
+    parentDocument$1 = null;
+}
 
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -732,6 +736,7 @@ let Popup = class Popup extends Component {
         this.element.classList.remove(CLASSNAMES.ROOT, CLASSNAMES.RTL, CLASSNAMES.OPEN, CLASSNAMES.CLOSE);
         this.content = null;
         this.relateTo = null;
+        destroy();
         super.destroy();
     }
     /**
@@ -5059,6 +5064,7 @@ let Tooltip = class Tooltip extends Component {
         if (this.popupObj) {
             this.popupObj.destroy();
         }
+        destroy();
         removeClass([this.element], ROOT$1);
         this.unwireEvents(this.opensOn);
         this.unwireMouseEvents(this.element);
@@ -6123,5 +6129,5 @@ function replaceTheme(container, theme, cssClass, makeEle) {
  * Popup Components
  */
 
-export { PositionData, Popup, getScrollableParent, getZindexPartial, getMaxZindex, calculateRelativeBasedPosition, calculatePosition, fit, isCollide, flip, ButtonProps, AnimationSettings, Dialog, DialogUtility, Animation$1 as Animation, Tooltip, Spinner, createSpinner, showSpinner, hideSpinner, setSpinner };
+export { PositionData, Popup, getScrollableParent, getZindexPartial, getMaxZindex, calculateRelativeBasedPosition, calculatePosition, fit, isCollide, flip, destroy, ButtonProps, AnimationSettings, Dialog, DialogUtility, Animation$1 as Animation, Tooltip, Spinner, createSpinner, showSpinner, hideSpinner, setSpinner };
 //# sourceMappingURL=ej2-popups.es2015.js.map

@@ -41,3 +41,4 @@ export declare function isCollide(element: HTMLElement, viewPortElement?: HTMLEl
  * @returns {void}
  */
 export declare function flip(element: HTMLElement, target: HTMLElement, offsetX: number, offsetY: number, positionX: string, positionY: string, viewPortElement?: HTMLElement, axis?: CollisionCoordinates, fixedParent?: boolean): void;
+export declare function destroy(): void;
